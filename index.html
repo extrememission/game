@@ -46,12 +46,24 @@
   <script src="https://unpkg.com/ruffle-player@latest/ruffle.js"></script>
 
   <script>
-    // Initialize Ruffle Player and load the SWF file
-    var ruffle = window.RufflePlayer.newest();  // Ensure Ruffle script has loaded before this
-    var player = ruffle.createPlayer();
-    document.getElementById("flashContent").innerHTML = ''; // Clear loading text
-    document.getElementById("flashContent").appendChild(player);
-    player.load("Gibbys-Sleigh-Ride-Game.swf");  // Replace with the correct path to your SWF file
+    // Wait for the page to fully load before running the script
+    window.addEventListener("load", function() {
+      // Check if RufflePlayer is available
+      if (window.RufflePlayer) {
+        // Initialize Ruffle player
+        var ruffle = window.RufflePlayer.newest(); // Make sure the player is created from Ruffle
+        var player = ruffle.createPlayer();  // Create a new Ruffle player instance
+
+        // Remove the loading text and add the player
+        document.getElementById("flashContent").innerHTML = ''; 
+        document.getElementById("flashContent").appendChild(player); 
+
+        // Load your SWF file
+        player.load("Gibbys-Sleigh-Ride-Game.swf");  // Make sure the SWF path is correct
+      } else {
+        console.error("RufflePlayer is not loaded correctly.");
+      }
+    });
   </script>
 </body>
 </html>
