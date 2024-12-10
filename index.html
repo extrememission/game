@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SWF File Emulator using Ruffle</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Optional: Fix for favicon error -->
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -41,14 +42,16 @@
     <p class="loading">Loading Flash content... Please wait.</p>
   </div>
 
+  <!-- Load Ruffle player -->
   <script src="https://unpkg.com/ruffle-player@latest/ruffle.js"></script>
+
   <script>
     // Initialize Ruffle Player and load the SWF file
-    var ruffle = window.RufflePlayer.newest();
+    var ruffle = window.RufflePlayer.newest();  // Ensure Ruffle script has loaded before this
     var player = ruffle.createPlayer();
     document.getElementById("flashContent").innerHTML = ''; // Clear loading text
     document.getElementById("flashContent").appendChild(player);
-    player.load("Gibbys-Sleigh-Ride-Game.swf"); // Replace with the path to your SWF file
+    player.load("Gibbys-Sleigh-Ride-Game.swf");  // Replace with the correct path to your SWF file
   </script>
 </body>
 </html>
